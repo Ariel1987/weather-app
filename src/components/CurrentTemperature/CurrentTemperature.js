@@ -25,7 +25,7 @@ const CurrentTemperature = () => {
 
   return (
     <Wrapper>
-      <img src={icons} alt="" />
+      <img src={icons} alt="weather-icon" />
       <h1>{currentTemperature}ºC</h1>
       <p>{currentWeather}</p>
     </Wrapper>
