@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useForecast } from '../../context/forecast'
+import useWeatherIcons from '../../hooks/useWeatherIcons'
 import { convertKelvinToCelcius } from '../../utils/convertKelvinToCelcius'
 import { Wrapper } from './CurrentTemperature.styles'
 
@@ -9,6 +10,7 @@ const CurrentTemperature = () => {
     currentTemperature: null,
     currentWeather: null,
   })
+  const icons = useWeatherIcons()
 
   useEffect(() => {
     if (state.data && !state.error) {
@@ -23,7 +25,7 @@ const CurrentTemperature = () => {
 
   return (
     <Wrapper>
-      <img src="./icons/sunny-cloudy.png" alt="" />
+      <img src={icons} alt="" />
       <h1>{currentTemperature}ºC</h1>
       <p>{currentWeather}</p>
     </Wrapper>
