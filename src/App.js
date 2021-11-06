@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import {
   CurrentWeatherDateWrapper,
   FooterWrapper,
@@ -10,48 +9,12 @@ import CurrentTemperature from '@/components/CurrentTemperature/CurrentTemperatu
 import CurrentDate from '@/components/CurrentDate/CurrentDate'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
-import { useLoading, LOADING, LOADING_ENDED } from '@/context/loading'
-import useCurrentLocation from '@/hooks/useCurrentLocation'
-import createUrlByLocation from '@/utils/createUrlByLocation'
-import {
-  FETCHING_FORECAST_ERROR,
-  FETCHING_FORECAST_SUCCESS,
-  useForecast,
-} from '@/context/forecast'
 import useDayOrNightBackground from './hooks/useDayOrNightBackground'
+import useFetchByLocation from './hooks/useFetchByLocation'
 
 function App() {
-  const {
-    state: { loading },
-    dispatch: dispatchLoading,
-  } = useLoading()
-  const location = useCurrentLocation()
-  const { dispatch } = useForecast()
   const dayOrNight = useDayOrNightBackground()
-
-  useEffect(() => {
-    dispatchLoading({ type: LOADING })
-    if (location.loaded) {
-      const url = createUrlByLocation(
-        location.coordinates.lat,
-        location.coordinates.long,
-      )
-      fetch(url)
-        .then((data) => data.json())
-        .then((data) => {
-          if (data.cod === '400') {
-            dispatch({ type: FETCHING_FORECAST_ERROR, payload: data })
-          } else {
-            dispatch({ type: FETCHING_FORECAST_SUCCESS, payload: data })
-          }
-          dispatchLoading({ type: LOADING_ENDED })
-        })
-        .catch((error) => {
-          dispatch({ type: FETCHING_FORECAST_ERROR, payload: error })
-          dispatchLoading({ type: LOADING_ENDED })
-        })
-    }
-  }, [dispatch, dispatchLoading, location])
+  const loading = useFetchByLocation()
 
   return (
     <>
