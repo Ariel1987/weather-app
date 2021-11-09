@@ -15,7 +15,13 @@ const Header = () => {
     <div>
       <SearchLocationWrapper>
         {!showSearchBar && <CurrentLocation />}
-        <Search onClick={showSearchBarHandler} onShowSearchBar={showSearchBar}/>
+        <Search 
+          showSearchBar={showSearchBar} 
+          onCloseSearch={() => setShowSearchBar(false)}
+        />
+        <button onClick={() => setShowSearchBar(state => !state)}>
+          <img src="./icons/search.png" alt="search" />
+        </button>
       </SearchLocationWrapper>
       <CurrentTime />
     </div>

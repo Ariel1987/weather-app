@@ -8,12 +8,8 @@ import {
 } from '@/context/forecast'
 import { useEffect } from 'react'
 
-
 const useFetchByLocation = () => {
-  const {
-    state: { loading },
-    dispatch: dispatchLoading,
-  } = useLoading()
+  const { dispatch: dispatchLoading } = useLoading()
   const location = useCurrentLocation()
   const { dispatch } = useForecast()
   
@@ -40,8 +36,6 @@ const useFetchByLocation = () => {
         })
     }
   }, [dispatch, dispatchLoading, location])
-
-  return loading
 }
 
 export default useFetchByLocation

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import {
   CurrentWeatherDateWrapper,
   FooterWrapper,
@@ -9,12 +10,14 @@ import CurrentTemperature from '@/components/CurrentTemperature/CurrentTemperatu
 import CurrentDate from '@/components/CurrentDate/CurrentDate'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
-import useDayOrNightBackground from './hooks/useDayOrNightBackground'
-import useFetchByLocation from './hooks/useFetchByLocation'
+import useDayOrNightBackground from '@/hooks/useDayOrNightBackground'
+import useFetchByLocation from '@/hooks/useFetchByLocation'
+import { useLoading } from '@/context/loading'
 
 function App() {
   const dayOrNight = useDayOrNightBackground()
-  const loading = useFetchByLocation()
+  useFetchByLocation()
+  const { state: { loading } } = useLoading()
 
   return (
     <>
