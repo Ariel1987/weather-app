@@ -1,15 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import CurrentLocation from './components/CurrentLocation/CurrentLocation'
 import CurrentTime from './components/CurrentTime/CurrentTime'
 import Search from './components/Search/Search'
-import { SearchLocationWrapper } from './Header.styles'
+import { Button, SearchLocationWrapper } from './Header.styles'
 
 const Header = () => {
   const [showSearchBar, setShowSearchBar] = useState(false)
-
-  const showSearchBarHandler = () => {
-    setShowSearchBar(true)
-  }
 
   return (
     <div>
@@ -22,9 +18,9 @@ const Header = () => {
         {
           !showSearchBar
           && (
-            <button onClick={() => setShowSearchBar(state => !state)}>
+            <Button onClick={() => setShowSearchBar(state => !state)}>
               <img src="./icons/search.png" alt="search" />
-            </button>
+            </Button>
           )
         }
       </SearchLocationWrapper>

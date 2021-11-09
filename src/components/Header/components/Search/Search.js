@@ -6,8 +6,7 @@ import createUrlByCity from '@/utils/createUrlByCity'
 import { useLoading, LOADING, LOADING_ENDED } from '@/context/loading'
 import {
   useForecast,
-  FETCHING_FORECAST_SUCCESS,
-  FETCHING_FORECAST_ERROR
+  FETCHING_FORECAST_SUCCESS
 } from '@/context/forecast'
 
 const Search = ({ showSearchBar, closeSearch }) => {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { useForecast } from '../../context/forecast'
-import useWeatherIcons from '../../hooks/useWeatherIcons'
-import { convertKelvinToCelcius } from '../../utils/convertKelvinToCelcius'
+import { useForecast } from '@/context/forecast'
+import useWeatherIcons from '@/hooks/useWeatherIcons'
+import { convertKelvinToCelcius } from '@/utils/convertKelvinToCelcius'
 import { Wrapper } from './CurrentTemperature.styles'
 
 const CurrentTemperature = () => {
