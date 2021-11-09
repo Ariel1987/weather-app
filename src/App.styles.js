@@ -47,7 +47,7 @@ export const Modal = styled.div`
         align-items: center;
         height: 100vh;
         width: 100%;
-        background-color: #1e75bc;
+        background-color: rgb(30 117 188 / 85%);
         transition: all .7s cubic-bezier(0.215, 0.610, 0.355, 1);
         transform: translateY(${loading ? '-100%' : 0});
         z-index: 1;

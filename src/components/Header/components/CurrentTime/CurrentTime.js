@@ -1,27 +1,33 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import formatTime from '@/utils/formatTime'
+import { useForecast } from '../../../../context/forecast'
 
 const CurrentTime = () => {
-    const [localTime, setLocalTime] = useState(formatTime(new Date()))
+    const { state: { data } } = useForecast()
+    const [localTime, setLocalTime] = useState(data?.dt)
     const intervalRef = useRef()
 
-    const getTime = () => {
-        const now = new Date()
-        return formatTime(now)
-    }
+    useEffect(() => {
+        if (data) {
+            setLocalTime(data.dt)
+            clearInterval(intervalRef.current)
+        }
+    }, [data])
 
     const setTimeInterval = useCallback(() => {
         intervalRef.current = setInterval(() => {
-            setLocalTime(getTime())
+            setLocalTime(localTime)
         }, 1000)
-    }, [])
+    }, [localTime])
 
     useEffect(() => {
         setTimeInterval()
         return () => clearInterval(intervalRef.current)
     }, [setTimeInterval])
 
-    return (<p>{localTime}</p>)
+    console.log(localTime)
+
+    return (<p>{formatTime(localTime)}</p>)
 }
 
 export default CurrentTime
