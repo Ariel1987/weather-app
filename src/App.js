@@ -20,8 +20,6 @@ function App() {
   useFetchByLocation()
   const { state: { loading } } = useLoading()
 
-  console.log('render')
-
   return (
     <>
       <Wrapper imgUrl={dayOrNight}>
