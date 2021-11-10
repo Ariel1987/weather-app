@@ -8,7 +8,7 @@ const InputWrapper = styled.div`
 
 const Input = styled.input`
   width: 80vw;
-  height: 30px;
+  height: 25px;
   border-radius: 20px;
   padding: 0 14px 0 8px;
   border: none;
@@ -18,8 +18,8 @@ const CloseButton = styled.button`
   display: flex;
   border-radius: 17px;
   background-color: #ddd;
-  height: 16px;
-  width: 16px;
+  height: 20px;
+  width: 20px;
   justify-content: center;
   align-items: center;
   font-size: 9px;
@@ -38,8 +38,9 @@ const SearchButton = styled.button`
   background-color: #2064af;
   border-radius: 50%;
   border: none;
+  margin-right: 4px;
   & > img {
-    height: 12px;
+    height: 10px;
     width: auto;
   }
 `

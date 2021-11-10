@@ -6,5 +6,9 @@ export const SearchLocationWrapper = styled.section`
 
 export const Button = styled.section`
   border: none;
-  padding-left: 5px;
+
+  & > img {
+    height: 18px;
+    margin-left: 16px;
+  }
 `

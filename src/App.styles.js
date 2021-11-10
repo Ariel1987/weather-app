@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.section`
-    ${({ theme }) => css`
+    ${({ imgUrl }) => css`
         height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
         text-align: center;
-        background-image: url(${props => props.imgUrl});
+        background-image: url(${imgUrl});
         text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
    `}
 `

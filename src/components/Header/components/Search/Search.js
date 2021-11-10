@@ -8,6 +8,7 @@ import {
   useForecast,
   FETCHING_FORECAST_SUCCESS
 } from '@/context/forecast'
+import { toast } from 'react-toastify'
 
 const Search = ({ showSearchBar, closeSearch }) => {
   const [city, setCity] = useState('')
@@ -15,16 +16,29 @@ const Search = ({ showSearchBar, closeSearch }) => {
   const { dispatch: dispatchForecastData } = useForecast()
 
   const handleSearchCity = (event) => {
-    dispatchLoading({ type: LOADING })
     event.preventDefault()
+    dispatchLoading({ type: LOADING })
     const url = createUrlByCity(city)
     fetch(url)
       .then(data => data.json())
       .then(weatherData => {
         try {
-          dispatchForecastData({ type: FETCHING_FORECAST_SUCCESS, payload: weatherData })
-          dispatchLoading({ type: LOADING_ENDED })
-          closeSearch(false)
+          if (weatherData.cod === '404') {
+            dispatchLoading({ type: LOADING_ENDED })
+            toast.error(`City ${city} not found`, {
+              position: "bottom-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            })
+          } else {
+            dispatchForecastData({ type: FETCHING_FORECAST_SUCCESS, payload: weatherData })
+            dispatchLoading({ type: LOADING_ENDED })
+            closeSearch(false)
+          }
         } catch (error) {
           console.error(error)
           dispatchLoading({ type: LOADING_ENDED })
@@ -36,23 +50,39 @@ const Search = ({ showSearchBar, closeSearch }) => {
   if (!showSearchBar) return null
 
   return (
-    <form onSubmit={handleSearchCity} style={{ marginBottom: '8px' }}>
+    <form onSubmit={handleSearchCity}>
       <InputWrapper>
         <Input
           type="text"
           id="city"
           placeholder="Type city name"
           onChange={event => setCity(event.target.value)}
+          value={city}
         />
         <ButtonGroup>
           {
             !!city
               ? (
-                <SearchButton type="submit">
-                  <img src="./icons/search.png" alt="search" />
-                </SearchButton>
+                <>
+                  <SearchButton type="submit" >
+                    <img src="./icons/search.png" alt="search" />
+                  </SearchButton>
+                  <CloseButton
+                    type="button"
+                    onClick={() => setCity('')}
+                  >
+                    X
+                  </CloseButton>
+                </>
               )
-              : <CloseButton onClick={() => closeSearch(false)}>X</CloseButton>
+              : (
+                <CloseButton
+                  type="button"
+                  onClick={() => closeSearch(false)}
+                >
+                  X
+                </CloseButton>
+              )
           }
         </ButtonGroup>
       </InputWrapper>

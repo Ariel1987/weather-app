@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useForecast } from '@/context/forecast'
 
-const CurrentLocation = () => {
+const CurrentLocation = ({ onClick }) => {
   const [city, setCity] = useState()
   const { state } = useForecast()
 
@@ -11,7 +11,7 @@ const CurrentLocation = () => {
     }
   }, [state])
 
-  return <p>{city}</p>
+  return <p onClick={onClick}>{city}</p>
 }
 
 export default CurrentLocation

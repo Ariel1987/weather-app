@@ -12,11 +12,15 @@ import Footer from '@/components/Footer/Footer'
 import useDayOrNightBackground from '@/hooks/useDayOrNightBackground'
 import useFetchByLocation from '@/hooks/useFetchByLocation'
 import { useLoading } from '@/context/loading'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   const dayOrNight = useDayOrNightBackground()
   useFetchByLocation()
   const { state: { loading } } = useLoading()
+
+  console.log('render')
 
   return (
     <>
@@ -38,6 +42,18 @@ function App() {
           <img src="./images/loading.svg" alt="loading" />
         </Modal>
       )}
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        theme="dark"
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   )
 }
