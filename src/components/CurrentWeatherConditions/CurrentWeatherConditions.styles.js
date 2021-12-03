@@ -5,5 +5,9 @@ export const Wrapper = styled.section`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+
+    img {
+      width: 25px;
+    }
   `}
 `

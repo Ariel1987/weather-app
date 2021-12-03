@@ -18,7 +18,7 @@ import CurrentWeatherConditions from './components/CurrentWeatherConditions/Curr
 
 function App() {
   const dayOrNight = useDayOrNightBackground()
-  // useFetchByLocation()
+  useFetchByLocation()
   const {
     state: { loading },
   } = useLoading()

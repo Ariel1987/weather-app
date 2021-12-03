@@ -27,7 +27,7 @@ const CurrentTemperature = () => {
     <Wrapper>
       <img src={icons} alt="weather-icon" />
       <h1>{currentTemperature}ºC</h1>
-      <p>{currentWeather}</p>
+      <h3>{currentWeather}</h3>
     </Wrapper>
   )
 }

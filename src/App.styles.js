@@ -39,18 +39,33 @@ export const CurrentWeatherDateWrapper = styled.section`
   ${({ theme }) => css`
     color: ${theme.colors.font};
     font-size: ${theme.font.size.small};
+
+    h1 {
+      font-size: ${theme.font.size.xxxlarge};
+    }
+
+    p {
+      font-size: 10px;
+    }
+
+    h3 {
+      padding-top: 0.5rem;
+      font-size: ${theme.font.size.large};
+      font-weight: ${theme.font.weight.light};
+    }
   `}
 `
 
 export const CurrentWeatherConditionsWrapper = styled.section`
   ${({ theme }) => css`
     color: ${theme.colors.font};
-    font-size: ${theme.font.size.small};
-    margin-bottom: 5vh;
+    font-size: 15px;
+    margin-bottom: 10px;
 
     hr {
       width: 90vw;
       margin-bottom: 20px;
+      opacity: 0.2;
     }
   `}
 `
