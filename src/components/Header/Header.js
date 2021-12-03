@@ -12,26 +12,22 @@ const Header = () => {
 
   return (
     <>
-      <SearchLocationWrapper >
-        {!showSearchBar && <CurrentLocation onClick={() => handleShowSearchBar(true)} />}
-        <Search
-          showSearchBar={showSearchBar}
-          closeSearch={setShowSearchBar}
-        />
-        {
-          !showSearchBar
-          && (
-            <Button
-              type="button"
-              onClick={(event) => {
-                event.preventDefault()
-                handleShowSearchBar(true)
-              }}
-            >
-              <img src="./icons/search.png" alt="search" />
-            </Button>
-          )
-        }
+      <SearchLocationWrapper>
+        {!showSearchBar && (
+          <CurrentLocation onClick={() => handleShowSearchBar(true)} />
+        )}
+        <Search showSearchBar={showSearchBar} closeSearch={setShowSearchBar} />
+        {!showSearchBar && (
+          <Button
+            type="button"
+            onClick={(event) => {
+              event.preventDefault()
+              handleShowSearchBar(true)
+            }}
+          >
+            <img src="./icons/search.png" alt="search" />
+          </Button>
+        )}
       </SearchLocationWrapper>
     </>
   )

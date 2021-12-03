@@ -1,16 +1,12 @@
-import { Wrapper } from "./Footer.styles"
-import Humidity from "./components/Humidity/Humidity"
-import MinMaxTemperature from "./components/MinMaxTemperature/MinMaxTemperature"
-import Wind from "./components/Wind/Wind"
+import { Wrapper } from './Footer.styles'
 
 const Footer = () => {
-    return (
-        <Wrapper>
-            <MinMaxTemperature />
-            <Wind />
-            <Humidity />
-        </Wrapper>
-    )
+  return (
+    <Wrapper>
+      <h3>Today</h3>
+      <p>7 days {'>'}</p>
+    </Wrapper>
+  )
 }
 
 export default Footer
