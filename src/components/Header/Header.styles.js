@@ -12,3 +12,13 @@ export const Button = styled.section`
     margin-left: 16px;
   }
 `
+
+export const BackButton = styled.section`
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  img {
+    width: 20px;
+  }
+`

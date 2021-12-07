@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import {
   CurrentWeatherDateWrapper,
   HeaderWrapper,
@@ -9,26 +10,34 @@ import CurrentDate from '@/components/CurrentDate/CurrentDate'
 import Header from '@/components/Header/Header'
 import useDayOrNightBackground from '@/hooks/useDayOrNightBackground'
 import useFetchByLocation from '@/hooks/useFetchByLocation'
-import { useLoading } from '@/context/loading'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { BackArrowButton, CurrentWeatherConditionsWrapper } from './App.styles'
+import { CurrentWeatherConditionsWrapper } from './App.styles'
 import Footer from './components/Footer/Footer'
 import CurrentWeatherConditions from './components/CurrentWeatherConditions/CurrentWeatherConditions'
+import useFetchByLocationHourly from './hooks/useFetchByLocationHourly'
+import fetchForecast from './utils/fetchForecastHourly'
+import createUrlForHourlyForecast from './utils/createUrlForHourlyForecast'
+import { useLoading, LOADING, LOADING_ENDED } from '@/context/loading'
+import {
+  FETCHING_FORECAST_ERROR,
+  FETCHING_FORECAST_SUCCESS,
+  useForecast,
+} from '@/context/forecast'
+
 
 function App() {
   const dayOrNight = useDayOrNightBackground()
-  useFetchByLocation()
   const {
     state: { loading },
+    dispatch: dispatchLoading
   } = useLoading()
+  const { dispatch: dispatchForecast } = useForecast()
+  useFetchByLocationHourly()
 
   return (
     <>
       <Wrapper imgUrl={dayOrNight}>
-        <BackArrowButton>
-          <img src="./icons/back-arrow.png" alt="back-arrow" />
-        </BackArrowButton>
         <HeaderWrapper>
           <Header />
         </HeaderWrapper>

@@ -10,7 +10,7 @@ import {
 } from './Search.styles'
 import createUrlByCity from '@/utils/createUrlByCity'
 import { useLoading, LOADING, LOADING_ENDED } from '@/context/loading'
-import { useForecast, FETCHING_FORECAST_SUCCESS } from '@/context/forecast'
+import { useForecast, FETCHING_FORECAST_BY_LOCATION_SUCCESS } from '@/context/forecast'
 import { toast } from 'react-toastify'
 
 const Search = ({ showSearchBar, closeSearch }) => {
@@ -41,7 +41,7 @@ const Search = ({ showSearchBar, closeSearch }) => {
             })
           } else {
             dispatchForecastData({
-              type: FETCHING_FORECAST_SUCCESS,
+              type: FETCHING_FORECAST_BY_LOCATION_SUCCESS,
               payload: weatherData,
             })
             dispatchLoading({ type: LOADING_ENDED })

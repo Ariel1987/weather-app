@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useForecast } from '@/context/forecast'
-import { convertKelvinToCelcius } from '@/utils/convertKelvinToCelcius'
 
 const MinMaxTemperature = () => {
   const { state } = useForecast()
@@ -12,8 +11,8 @@ const MinMaxTemperature = () => {
   useEffect(() => {
     if (state.data && !state.error) {
       setMinMaxTemperature({
-        minTemperature: convertKelvinToCelcius(state.data.main.temp_min),
-        maxTemperature: convertKelvinToCelcius(state.data.main.temp_max),
+        minTemperature: Math.round(state.data.daily[0].temp.min),
+        maxTemperature: Math.round(state.data.daily[0].temp.max),
       })
     }
   }, [state])

@@ -12,8 +12,8 @@ const useFetchByLocation = () => {
   const { dispatch: dispatchLoading } = useLoading()
   const location = useCurrentLocation()
   const { dispatch } = useForecast()
-  
-  useEffect(() => {
+
+  const loadData = () => {
     dispatchLoading({ type: LOADING })
     if (location.loaded) {
       const url = createUrlByLocation(
@@ -35,7 +35,15 @@ const useFetchByLocation = () => {
           dispatchLoading({ type: LOADING_ENDED })
         })
     }
+  }
+
+  useEffect(() => {
+    loadData()
   }, [dispatch, dispatchLoading, location])
+
+  return loadData
 }
+    
+  
 
 export default useFetchByLocation

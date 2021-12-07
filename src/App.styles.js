@@ -16,16 +16,6 @@ export const Wrapper = styled.section`
   `}
 `
 
-export const BackArrowButton = styled.section`
-  position: absolute;
-  top: 10px;
-  left: 10px;
-
-  img {
-    width: 20px;
-  }
-`
-
 export const HeaderWrapper = styled.section`
   ${({ theme }) => css`
     color: ${theme.colors.font};

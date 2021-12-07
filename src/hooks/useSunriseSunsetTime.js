@@ -11,8 +11,8 @@ const useSunriseSunsetTime = () => {
   useEffect(() => {
     if (state.data && !state.error) {
       setSunRiseSunsetTime({
-        sunrise: new Date(state.data.sys.sunrise*1000).getHours(),
-        sunset: new Date(state.data.sys.sunset*1000).getHours(),
+        sunrise: new Date(state.data.daily[0].sunrise*1000).getHours(),
+        sunset: new Date(state.data.daily[0].sunset*1000).getHours(),
       })
     }
   }, [state])

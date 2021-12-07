@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useForecast } from '@/context/forecast'
 import useWeatherIcons from '@/hooks/useWeatherIcons'
-import { convertKelvinToCelcius } from '@/utils/convertKelvinToCelcius'
 import { Wrapper } from './CurrentTemperature.styles'
 
 const CurrentTemperature = () => {
@@ -15,8 +14,8 @@ const CurrentTemperature = () => {
   useEffect(() => {
     if (state.data && !state.error) {
       setWeather({
-        currentTemperature: convertKelvinToCelcius(state.data.main.temp),
-        currentWeather: state.data.weather[0].main,
+        currentTemperature: Math.round(state.data.current.temp),
+        currentWeather: state.data.current.weather[0].main,
       })
     }
   }, [state])

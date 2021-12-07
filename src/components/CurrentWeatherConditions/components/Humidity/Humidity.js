@@ -6,7 +6,7 @@ const Humidity = () => {
 
   useEffect(() => {
     if (state.data && !state.error) {
-      setHumidity(state.data.main.humidity)
+      setHumidity(state.data.current.humidity)
     }
   }, [state])
 

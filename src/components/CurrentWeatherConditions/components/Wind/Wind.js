@@ -6,7 +6,7 @@ const Wind = () => {
 
     useEffect(() => {
         if (state.data && !state.error) {
-            setWind(Math.round(state.data.wind.speed))
+            setWind(Math.round(state.data.current.wind_speed))
         }
     }, [state])
     return (

@@ -7,7 +7,7 @@ const CurrentLocation = ({ onClick }) => {
 
   useEffect(() => {
     if (state.data && !state.error) {
-      setCity(state.data.name)
+      setCity(state.data.timezone)
     }
   }, [state])
 
